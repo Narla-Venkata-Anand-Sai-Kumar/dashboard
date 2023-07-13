@@ -182,7 +182,7 @@ class Screen1 extends StatelessWidget {
             ),
             child: SizedBox(
               height: MediaQuery.of(context).size.height,
-              child: const TabBarView(
+              child: TabBarView(
                 children: [
                   Tab1Content(),
                   Tab2Content(),
@@ -197,8 +197,9 @@ class Screen1 extends StatelessWidget {
 }
 
 class Tab1Content extends StatelessWidget {
-  const Tab1Content({Key? key}) : super(key: key);
-
+  Tab1Content({Key? key}) : super(key: key);
+  final List<double> values = [5, 9, 20];
+  final List<String> labels = ['Coursera', 'Nptel', 'Edx'];
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -210,7 +211,6 @@ class Tab1Content extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 0.23,
           decoration: BoxDecoration(
-            // color: Colors.amber,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Row(
@@ -229,13 +229,9 @@ class Tab1Content extends StatelessWidget {
                 ),
               ),
               Container(
-                // padding: const EdgeInsets.all(12),
                 margin: const EdgeInsets.only(
                     top: 20, left: 5, bottom: 20, right: 7),
-                decoration: const BoxDecoration(
-                    // color: Colors.white,
-
-                    ),
+                decoration: const BoxDecoration(),
                 child: Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(10),
@@ -285,46 +281,137 @@ class Tab1Content extends StatelessWidget {
             ],
           ),
         ),
+        Container(
+          width : MediaQuery.of(context).size.width * 1,
+          margin: EdgeInsets.only(left: 15),
+          child: Text("Online Certifications : ",style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),),
+          ),
+
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.23,
+          padding: EdgeInsets.all(10),
+          margin: EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Color.fromARGB(255, 237, 229, 229).withOpacity(0.5),
+                spreadRadius: 7,
+                blurRadius: 10,
+              ),
+            ],
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color.fromARGB(255, 117, 161, 91).withOpacity(0.5),
+                Color.fromARGB(255, 98, 196, 96),
+              ],
+            ),
+          ),
+          child: CustomPaint(
+            painter: BarGraphPainter(values, labels),
+          ),
+        ),
       ],
     );
   }
 }
 
-class BarGraph extends StatelessWidget {
-  final double value1;
-  final double value2;
-  final double value3;
+class BarGraphPainter extends CustomPainter {
+  final List<double> values;
+  final List<String> labels;
+  final Color barColor = Colors.blue;
+  final Color gridColor = Colors.grey.shade300;
+  final double barWidth = 50.0;
+  final double gridLineWidth = 1.0;
+  final double labelFontSize = 13.0;
+  final double valueFontSize = 18.0;
 
-  const BarGraph({super.key, required this.value1, required this.value2, required this.value3});
+  BarGraphPainter(this.values, this.labels);
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _buildBar('Value 1', value1),
-          _buildBar('Value 2', value2),
-          _buildBar('Value 3', value3),
-        ],
-      ),
-    );
+  void paint(Canvas canvas, Size size) {
+    final barPaint = Paint()..color = barColor;
+    final gridPaint = Paint()
+      ..color = gridColor
+      ..strokeWidth = gridLineWidth;
+
+    double startX = 0.0;
+    final barGap =
+        (size.width - (barWidth * values.length)) / (values.length + 1);
+
+    // Draw vertical grid lines
+    for (int i = 0; i <= values.length; i++) {
+      final x = startX + (i * (barWidth + barGap));
+      canvas.drawLine(
+        Offset(x, 0),
+        Offset(x, size.height),
+        gridPaint,
+      );
+    }
+
+    // Draw horizontal grid lines
+    for (int i = 0; i <= 10; i++) {
+      final y = size.height - ((size.height / 10) * i);
+      canvas.drawLine(
+        Offset(0, y),
+        Offset(size.width, y),
+        gridPaint,
+      );
+    }
+
+    for (int i = 0; i < values.length; i++) {
+      final barHeight = (values[i] / (values[1] + values[0] + values[2])) * 200;
+      final barRect = Rect.fromLTWH(
+        startX + barGap + (i * (barWidth + barGap)),
+        size.height - barHeight,
+        barWidth,
+        barHeight,
+      );
+      canvas.drawRect(barRect, barPaint);
+
+      final label = labels[i];
+      final value = (values[i].toInt()).toString();
+      final textSpan = TextSpan(
+        text: '$value',
+        style: TextStyle(
+            fontSize: valueFontSize,
+            fontWeight: FontWeight.bold,
+            color: Colors.black),
+      );
+      final textPainter = TextPainter(
+        text: textSpan,
+        textDirection: TextDirection.ltr,
+      );
+      textPainter.layout();
+      final textX = barRect.center.dx - (textPainter.width / 2);
+      final textY = barRect.top - (textPainter.height + 4);
+      textPainter.paint(canvas, Offset(textX, textY));
+
+      final labelSpan = TextSpan(
+        text: label,
+        style: TextStyle(fontSize: labelFontSize),
+      );
+      final labelPainter = TextPainter(
+        text: labelSpan,
+        textDirection: TextDirection.ltr,
+      );
+      labelPainter.layout();
+      final labelX = barRect.center.dx - (labelPainter.width / 2);
+      final labelY = size.height - labelPainter.height;
+      labelPainter.paint(canvas, Offset(labelX, labelY));
+    }
   }
 
-  Widget _buildBar(String label, double value) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Container(
-          width: 20.0,
-          height: value * 100.0,
-          color: Colors.blue,
-        ),
-        const SizedBox(height: 8.0),
-        Text(label),
-      ],
-    );
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
   }
 }
 
