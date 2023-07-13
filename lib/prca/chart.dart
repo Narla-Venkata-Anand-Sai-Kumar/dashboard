@@ -68,8 +68,8 @@ class Screen1 extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.network(
-                              'https://media.geeksforgeeks.org/auth-dashboard-uploads/badge%402x.png',
+                            Image.asset(
+                              'assets/images/badge.png',
                               height: 23,
                               width: 23,
                             ),
