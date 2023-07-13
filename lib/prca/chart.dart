@@ -27,97 +27,7 @@ class Screen1 extends StatelessWidget {
         body: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            Container(
-              padding: const EdgeInsets.all(20.0),
-              // margin: EdgeInsets.all(10.0),
-              width: MediaQuery.of(context).size.width * 90,
-              height: MediaQuery.of(context).size.height * 0.3,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(20.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 20,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 110,
-                          width: 110,
-                          child: CircularProgressIndicator(
-                            value:
-                                0.3, // Set value to 1.0 for a dark-filled circular bar
-                            strokeWidth: 8,
-                            backgroundColor: Color.fromARGB(215, 234, 237, 239),
-                          ),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'assets/images/badge.png',
-                              height: 23,
-                              width: 23,
-                            ),
-                            const SizedBox(width: 4),
-                            const Text(
-                              '12th',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    // padding: const EdgeInsets.all(12),
-                    margin: const EdgeInsets.all(12),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        AnimatedTextField(
-                          id: "Name",
-                          value: "N V Anand",
-                        ),
-                        SizedBox(height: 10),
-                        AnimatedTextField(
-                          id: "Section",
-                          value: "S-05",
-                        ),
-                        SizedBox(height: 10),
-                        AnimatedTextField(
-                          id: "Reg No",
-                          value: "992100449",
-                        ),
-                        SizedBox(height: 10),
-                        AnimatedTextField(
-                          id: "KARE RANK",
-                          value: "12th",
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
+              contain(),
             Container(
                     // width: MediaQuery.of(context).size.width * 0.45,
                     margin: const EdgeInsets.only(top: 0,left:20,right: 20, ),
@@ -145,6 +55,107 @@ class Screen1 extends StatelessWidget {
              LineChartExample(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class contain extends StatelessWidget {
+  const contain({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(20.0),
+      // margin: EdgeInsets.all(10.0),
+      width: MediaQuery.of(context).size.width * 90,
+      height: MediaQuery.of(context).size.height * 0.3,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width * 0.45,
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(20.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 20,
+                  offset: const Offset(0, 3),
+                ),
+              ],
+            ),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                const SizedBox(
+                  height: 110,
+                  width: 110,
+                  child: CircularProgressIndicator(
+                    value:
+                        0.3, // Set value to 1.0 for a dark-filled circular bar
+                    strokeWidth: 8,
+                    backgroundColor: Color.fromARGB(215, 234, 237, 239),
+                  ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/badge.png',
+                      height: 23,
+                      width: 23,
+                    ),
+                    const SizedBox(width: 4),
+                    const Text(
+                      '12th',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            // padding: const EdgeInsets.all(12),
+            margin: const EdgeInsets.all(12),
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AnimatedTextField(
+                  id: "Name",
+                  value: "N V Anand",
+                ),
+                SizedBox(height: 10),
+                AnimatedTextField(
+                  id: "Section",
+                  value: "S-05",
+                ),
+                SizedBox(height: 10),
+                AnimatedTextField(
+                  id: "Reg No",
+                  value: "992100449",
+                ),
+                SizedBox(height: 10),
+                AnimatedTextField(
+                  id: "KARE RANK",
+                  value: "12th",
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

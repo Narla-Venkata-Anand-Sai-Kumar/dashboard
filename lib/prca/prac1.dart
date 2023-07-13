@@ -64,11 +64,11 @@ class Screen1 extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.network(
-                            'https://media.geeksforgeeks.org/auth-dashboard-uploads/badge%402x.png',
-                            height: 23,
-                            width: 23,
-                          ),
+                          Image.asset(
+                              'assets/images/badge.png',
+                              height: 23,
+                              width: 23,
+                            ),
                           const SizedBox(width: 4),
                           const Text(
                             '12th',
@@ -185,7 +185,14 @@ class Tab1Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Container(
+
+      child: Row(
+        children: [
+          Image.asset("assets/images/a_badge.png",)
+        ],
+      ),
+    );
   }
 }
 
