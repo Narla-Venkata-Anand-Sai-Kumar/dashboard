@@ -27,7 +27,7 @@ class Screen1 extends StatelessWidget {
         body: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
-              contain(),
+            const contain(),
             Container(
                     // width: MediaQuery.of(context).size.width * 0.45,
                     margin: const EdgeInsets.only(top: 0,left:20,right: 20, ),

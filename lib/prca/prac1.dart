@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class StudentActivityDashboard1 extends StatelessWidget {
   const StudentActivityDashboard1({Key? key}) : super(key: key);
 
@@ -12,6 +11,15 @@ class StudentActivityDashboard1 extends StatelessWidget {
         body: Screen1(),
       ),
     );
+  }
+}
+
+class Tab2Content extends StatelessWidget {
+  const Tab2Content({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold();
   }
 }
 
@@ -65,10 +73,10 @@ class Screen1 extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                              'assets/images/badge.png',
-                              height: 23,
-                              width: 23,
-                            ),
+                            'assets/images/badge.png',
+                            height: 23,
+                            width: 23,
+                          ),
                           const SizedBox(width: 4),
                           const Text(
                             '12th',
@@ -83,7 +91,6 @@ class Screen1 extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  // padding: const EdgeInsets.all(12),
                   margin: const EdgeInsets.all(12),
                   child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -92,21 +99,33 @@ class Screen1 extends StatelessWidget {
                       AnimatedTextField(
                         id: "Name",
                         value: "N V Anand",
+                        id_size: 20,
+                        val_size: 16,
+                        color1: Colors.black,
+                      ),
+                      SizedBox(height: 10),
+                      AnimatedTextField(
+                        id: "Roll No",
+                        value: "9921004497",
+                        id_size: 20,
+                        val_size: 14,
+                        color1: Colors.black,
+                      ),
+                      SizedBox(height: 10),
+                      AnimatedTextField(
+                        id: "Branch",
+                        value: "CSE",
+                        id_size: 20,
+                        val_size: 16,
+                        color1: Colors.black,
                       ),
                       SizedBox(height: 10),
                       AnimatedTextField(
                         id: "Section",
-                        value: "S-05",
-                      ),
-                      SizedBox(height: 10),
-                      AnimatedTextField(
-                        id: "Reg No",
-                        value: "992100449",
-                      ),
-                      SizedBox(height: 10),
-                      AnimatedTextField(
-                        id: "KARE RANK",
-                        value: "12th",
+                        value: "B",
+                        id_size: 20,
+                        val_size: 16,
+                        color1: Colors.black,
                       ),
                     ],
                   ),
@@ -148,20 +167,17 @@ class Screen1 extends StatelessWidget {
           TabBar(
             labelColor: Colors.blue.shade400,
             indicator: BoxDecoration(
-              gradient: const LinearGradient(colors: [
-                Color.fromARGB(255, 0, 61, 245),
-                Colors.purple
-              ]),
+              gradient: const LinearGradient(
+                  colors: [Color.fromARGB(255, 0, 61, 245), Colors.purple]),
               borderRadius: BorderRadius.circular(9),
             ),
             tabs: const [
-              Tab(text: "Anand"),
-              Tab(text: 'Tab 2'),
+              Tab(text: "Acheivements"),
+              Tab(text: 'Projects'),
             ],
           ),
           Container(
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), // Outline color
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: SizedBox(
@@ -185,88 +201,194 @@ class Tab1Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ListView(
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        Container(
+          alignment: Alignment.topCenter,
+          margin: const EdgeInsets.all(10),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.23,
+          decoration: BoxDecoration(
+            // color: Colors.amber,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Row(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(
+                    top: 0, left: 10, right: 10, bottom: 5),
+                width: MediaQuery.of(context).size.width * 0.3,
+                height: MediaQuery.of(context).size.height * 0.21,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  image: const DecorationImage(
+                      image: AssetImage("assets/images/a_badge.png"),
+                      fit: BoxFit.fitWidth),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+              Container(
+                // padding: const EdgeInsets.all(12),
+                margin: const EdgeInsets.only(
+                    top: 20, left: 5, bottom: 20, right: 7),
+                decoration: const BoxDecoration(
+                    // color: Colors.white,
 
-      child: Row(
-        children: [
-          Image.asset("assets/images/a_badge.png",)
-        ],
-      ),
+                    ),
+                child: Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 20,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      AnimatedTextField(
+                        id: "No . of Hackthons Attended",
+                        value: "9",
+                        id_size: 15,
+                        val_size: 20,
+                        color1: Color.fromARGB(255, 255, 68, 84),
+                      ),
+                      SizedBox(height: 10),
+                      AnimatedTextField(
+                        id: "Ranked in top 10",
+                        value: "5",
+                        id_size: 15,
+                        val_size: 20,
+                        color1: Color.fromARGB(255, 93, 68, 255),
+                      ),
+                      SizedBox(height: 10),
+                      AnimatedTextField(
+                        id: "Winnings",
+                        value: "4",
+                        id_size: 15,
+                        val_size: 20,
+                        color1: Color.fromARGB(255, 74, 176, 27),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
 
-class Tab2Content extends StatelessWidget {
-  const Tab2Content({Key? key}) : super(key: key);
+class BarGraph extends StatelessWidget {
+  final double value1;
+  final double value2;
+  final double value3;
+
+  const BarGraph({super.key, required this.value1, required this.value2, required this.value3});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _buildBar('Value 1', value1),
+          _buildBar('Value 2', value2),
+          _buildBar('Value 3', value3),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBar(String label, double value) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Container(
+          width: 20.0,
+          height: value * 100.0,
+          color: Colors.blue,
+        ),
+        const SizedBox(height: 8.0),
+        Text(label),
+      ],
+    );
   }
 }
 
-class AnimatedTextField extends StatefulWidget {
+class AnimatedTextField extends StatelessWidget {
   final String id;
   final String value;
+  final Color color1;
+  final double id_size;
+  final double val_size;
 
-  const AnimatedTextField({Key? key, required this.id, required this.value})
+  const AnimatedTextField(
+      {Key? key,
+      required this.id,
+      required this.val_size,
+      required this.color1,
+      required this.id_size,
+      required this.value})
       : super(key: key);
 
   @override
-  _AnimatedTextFieldState createState() => _AnimatedTextFieldState();
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          "$id: ",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: id_size,
+          ),
+        ),
+        Text(
+          " $value",
+          style: TextStyle(
+            color: color1,
+            fontWeight: FontWeight.bold,
+            fontSize: val_size,
+          ),
+        ),
+      ],
+    );
+  }
 }
 
-class _AnimatedTextFieldState extends State<AnimatedTextField>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 500),
-      vsync: this,
-    );
-    _animation = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeInOut,
-      ),
-    );
-    _controller.forward();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+class Text_feilds extends StatelessWidget {
+  final String id;
+  final String value;
+  const Text_feilds({super.key, required this.id, required this.value});
 
   @override
   Widget build(BuildContext context) {
-    return FadeTransition(
-      opacity: _animation,
-      child: Row(
-        children: [
-          Text(
-            "${widget.id}: ",
-            style: const TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
-          ),
-          Text(
-            widget.value,
-            style: const TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
-          ),
-        ],
-      ),
+    return Row(
+      children: [
+        Text(
+          "$id : ",
+          style: const TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+        ),
+        Text(
+          value,
+          style: const TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 10),
+        ),
+      ],
     );
   }
 }
@@ -326,30 +448,6 @@ class _StarRatingState extends State<StarRating> {
           child: buildStar(context, index),
         );
       }),
-    );
-  }
-}
-
-class Text_feilds extends StatelessWidget {
-  final String id;
-  final String value;
-  const Text_feilds({super.key, required this.id, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          "$id : ",
-          style: const TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        Text(
-          value,
-          style: const TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 10),
-        ),
-      ],
     );
   }
 }
