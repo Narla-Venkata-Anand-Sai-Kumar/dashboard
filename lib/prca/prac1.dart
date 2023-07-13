@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:dashboard/prca/chart.dart';
-// import 'package:charts_flutter/flutter.dart' as charts;
 
 class StudentActivityDashboard1 extends StatelessWidget {
   const StudentActivityDashboard1({Key? key}) : super(key: key);
