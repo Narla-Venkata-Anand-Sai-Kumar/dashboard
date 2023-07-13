@@ -6,7 +6,7 @@ class StudentActivityDashboard1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return const DefaultTabController(
       length: 2,
       child: Scaffold(
         body: Screen1(),
@@ -133,7 +133,7 @@ class Screen1 extends StatelessWidget {
                 ),
               ],
             ),
-            child: Center(
+            child: const Center(
               child: StarRating(
                 starCount: 5,
                 rating: 3.1,
@@ -142,19 +142,19 @@ class Screen1 extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           TabBar(
             labelColor: Colors.blue.shade400,
             indicator: BoxDecoration(
-              gradient: LinearGradient(colors: [
-                const Color.fromARGB(255, 0, 61, 245),
+              gradient: const LinearGradient(colors: [
+                Color.fromARGB(255, 0, 61, 245),
                 Colors.purple
               ]),
               borderRadius: BorderRadius.circular(9),
             ),
-            tabs: [
+            tabs: const [
               Tab(text: "Anand"),
               Tab(text: 'Tab 2'),
             ],
@@ -166,8 +166,8 @@ class Screen1 extends StatelessWidget {
             ),
             child: SizedBox(
               height: MediaQuery.of(context).size.height,
-              child: TabBarView(
-                children: const [
+              child: const TabBarView(
+                children: [
                   Tab1Content(),
                   Tab2Content(),
                 ],
@@ -185,7 +185,7 @@ class Tab1Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }
 
@@ -194,7 +194,7 @@ class Tab2Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }
 

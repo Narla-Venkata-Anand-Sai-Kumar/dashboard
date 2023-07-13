@@ -21,7 +21,7 @@ class kare extends StatelessWidget {
         .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject('64aae54cb26642bf1fa5')
         .setSelfSigned(status: true); 
-    return     MaterialApp(
+    return     const MaterialApp(
       title: "Kare leave Application",
       debugShowCheckedModeBanner: false,
       home: StudentActivityDashboard1(),

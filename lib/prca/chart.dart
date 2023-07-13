@@ -25,7 +25,7 @@ class Screen1 extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: ListView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             Container(
               padding: const EdgeInsets.all(20.0),
@@ -133,7 +133,7 @@ class Screen1 extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Center(
+                    child: const Center(
                       child: StarRating(
                                 starCount: 5,
                                 rating: 3.1,
@@ -142,7 +142,7 @@ class Screen1 extends StatelessWidget {
                               ),
                     ),
             ),
-            LineChartExample(),
+             LineChartExample(),
           ],
         ),
       ),
@@ -308,11 +308,13 @@ class LineChartExample extends StatelessWidget {
     LineChartData('Highest', 90,2),
   ];
 
+   LineChartExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: charts.LineChart(
         _createSeriesData(),
         animate: true,
