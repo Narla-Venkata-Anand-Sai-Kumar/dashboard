@@ -318,7 +318,35 @@ class Tab1Content extends StatelessWidget {
             painter: BarGraphPainter(values, labels),
           ),
         ),
+        // PersonStars(),
       ],
+    );
+  }
+}
+
+
+class PersonStars extends StatelessWidget {
+  final List<int> starSizes = [48, 28, 12];
+  final int filledStarValue = 1;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width : MediaQuery.of(context).size.width * 1,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          for (int i = 0; i < starSizes.length; i++)
+            Positioned(
+              top: i.toDouble() * 8,
+              child: Icon(
+                Icons.star,
+                size: starSizes[i].toDouble(),
+                color: i < filledStarValue ? Colors.yellow : Colors.grey,
+              ),
+            ),
+        ],
+      ),
     );
   }
 }

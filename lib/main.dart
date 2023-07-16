@@ -1,7 +1,6 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
-// import 'package:dashboard/prca/chart.dart';
-import 'package:dashboard/prca/prac1.dart';
+import 'package:dashboard/main_Screens/main_chart.dart';
 // import 'package:kare/dependencies/admin.dart';
 
 
