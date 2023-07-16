@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class StudentActivityDashboard1 extends StatelessWidget {
   const StudentActivityDashboard1({Key? key}) : super(key: key);
@@ -19,7 +20,36 @@ class Tab2Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return ListView(
+      physics: NeverScrollableScrollPhysics(),
+      children: [
+        Container(
+          margin: EdgeInsets.all(20),
+          height: MediaQuery.of(context).size.height * 0.4,
+          // color: Colors.amber,
+          decoration: BoxDecoration(),
+          child: Row(
+            children: [
+              Container(
+                margin: EdgeInsets.only(right: 5),
+                width: MediaQuery.of(context).size.width * 0.43,
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 214, 239, 214),
+                    borderRadius: BorderRadius.circular(20)),
+                child: ListView(),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 5),
+                width: MediaQuery.of(context).size.width * 0.43,
+                decoration: BoxDecoration(
+                    color: Color(0xFFFFCACC),
+                    borderRadius: BorderRadius.circular(20)),
+              )
+            ],
+          ),
+        )
+      ],
+    );
   }
 }
 
@@ -282,14 +312,17 @@ class Tab1Content extends StatelessWidget {
           ),
         ),
         Container(
-          width : MediaQuery.of(context).size.width * 1,
+          width: MediaQuery.of(context).size.width * 1,
           margin: EdgeInsets.only(left: 15),
-          child: Text("Online Certifications : ",style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),),
+          child: Text(
+            "Online Certifications : ",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
           ),
+        ),
 
         Container(
           width: MediaQuery.of(context).size.width,
@@ -318,12 +351,102 @@ class Tab1Content extends StatelessWidget {
             painter: BarGraphPainter(values, labels),
           ),
         ),
+        Container(
+          width: MediaQuery.of(context).size.width * 1,
+          margin: EdgeInsets.only(left: 15),
+          child: Text(
+            "Code Cheif : ",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+        ),
         // PersonStars(),
+        progress_bar(ang: 2,),
       ],
     );
   }
 }
 
+class progress_bar extends StatelessWidget {
+  final double ang;
+  const progress_bar({
+    super.key,required this.ang
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top : 20,left: 70,right: 70),
+      child: Container(
+        decoration: BoxDecoration(color: const Color.fromARGB(255, 255, 255, 255),
+        border: Border.all(color: Colors.black26),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromARGB(255, 225, 221, 221).withOpacity(0.9),
+            spreadRadius: 6,
+            blurRadius: 6
+          )
+        ]
+        ),
+        child: Stack(
+          children: [
+            Container(
+              margin: EdgeInsets.all(60),
+              alignment: Alignment.bottomCenter,
+              child: Icon(
+                Icons.star,
+                color: Colors.amber.shade300,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              decoration: BoxDecoration(
+                // color: Colors.white
+              ),
+              child: Center(
+                child: SleekCircularSlider(
+                  appearance: CircularSliderAppearance(
+                    startAngle: 150,
+                    angleRange: ang*120,
+                    
+                    customColors: CustomSliderColors(
+                      progressBarColors: [Color.fromARGB(255, 222, 20, 20), Color.fromARGB(255, 57, 134, 212), Color.fromARGB(255, 168, 106, 85)],
+                      // trackColor: Colors.grey,
+                    ),
+                    customWidths: CustomSliderWidths(
+                      progressBarWidth: 20,
+                      trackWidth: 10,
+                      handlerSize: 4,
+                    ),
+                    infoProperties: InfoProperties(
+                      mainLabelStyle: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      modifier: (double value) {
+                        final roundedValue = value.round();
+                        return '$roundedValue';
+                      },
+                    ),
+                  ),
+                  min: 1,
+                  max: 3,
+                  initialValue: ang,
+                            onChange: null,
+                    onChangeEnd: null,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 class PersonStars extends StatelessWidget {
   final List<int> starSizes = [48, 28, 12];
@@ -332,7 +455,7 @@ class PersonStars extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width : MediaQuery.of(context).size.width * 1,
+      width: MediaQuery.of(context).size.width * 1,
       child: Stack(
         alignment: Alignment.center,
         children: [
