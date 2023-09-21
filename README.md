@@ -2,7 +2,8 @@
 *Chief Technology Officer*
 Totelligence Solutions  
 Hyderabad, Telangana, India  
-Email: venkatnarla0@gmail.com 
+Email: venkatnarla0@gmail.com
+
 Phone: +91 6309751599
 
 **Summary**
