@@ -2,8 +2,8 @@
 *Chief Technology Officer*
 Totelligence Solutions  
 Hyderabad, Telangana, India  
-Email: [Your Email Address]  
-Phone: [Your Phone Number]
+Email: venkatnarla0@gmail.com 
+Phone: +91 6309751599
 
 **Summary**
 AI and ML expert with 4+ years of experience in developing and deploying AI-powered solutions for education and healthcare sectors. Proven track record of success in leading and managing cross-functional teams to deliver high-impact projects. Expertise in deep learning, natural language processing, computer vision, and recommender systems. Strong technical skills and problem-solving abilities. Passionate about using AI to create positive and meaningful impact.
